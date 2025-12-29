@@ -1,0 +1,40 @@
+# English
+
+# Take user input
+# Visit each number in the list from the end
+    # Print the number
+
+numbers = list(map(int, input("Enter list of numbers: ").split()))
+
+index = len(numbers) - 1
+
+while index >= 0:
+    print(numbers[index])
+    index -= 1
+
+
+# Testcases
+
+# Case 1:
+# Input: [1,2,3,4,5]
+# Output: 5 4 3 2 1 
+
+# Case 2:   
+# Input: [0,6,7]
+# Output: 7 6 0
+
+# Case 3:
+# Input: []
+# Output: (no output)
+
+# Case 4:
+# Input: [0,2]
+# Output: 2 0
+
+# Case 5:
+# Input: [5]
+# Output: 5
+
+# Case 6:
+# Input: [2,2,2,2,2]
+# Output: 2 2 2 2 2
