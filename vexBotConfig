@@ -1,0 +1,31 @@
+from vex import *
+import json
+
+brain = Brain()
+fileName = "botConfigTemplate.json"
+
+cardPresent = brain.sdcard.is_inserted()
+if cardPresent == False:
+    brain.screen.new_line()
+    brain.screen.print("Card not detected")
+    exit()
+
+brain.screen.new_line()
+brain.screen.print("Card detected\n")
+
+fileContent = brain.sdcard.loadfile(fileName)
+if fileContent is None:
+    brain.screen.new_line()
+    brain.screen.print("File not found")
+    exit()
+
+brain.screen.new_line()
+brain.screen.print("File size:", len(fileContent))
+
+fileContent_str = fileContent.decode()
+brain.screen.new_line()
+brain.screen.print("File Content in String format:", fileContent_str)
+
+botConfig = json.loads(fileContent_str)
+brain.screen.new_line()
+brain.screen.print("File content in JSON Dump format:", json.dumps(botConfig))
