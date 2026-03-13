@@ -1,0 +1,181 @@
+# ---------------------------------------------------------------------------- #
+#                                                                              #
+# 	Module:       main.py                                                      #
+# 	Author:       vivek                                                        #
+# 	Created:      3/7/2026, 4:04:10 PM                                         #
+# 	Description:  V5 project                                                   #
+#                                                                              #
+# ---------------------------------------------------------------------------- #
+
+# Library imports
+from vex import *
+import json
+
+brain = Brain()
+fileName = "botConfigTemplate.json"
+
+
+cardPresent = brain.sdcard.is_inserted()
+if cardPresent == False:
+    brain.screen.new_line()
+    brain.screen.print("Card not detected")
+    brain.program_stop()
+
+brain.screen.new_line()
+brain.screen.print("Card detected\n")
+
+fileContent = brain.sdcard.loadfile(fileName)
+if fileContent is None:
+    brain.screen.new_line()
+    brain.screen.print("File not found")
+    brain.program_stop()
+
+brain.screen.new_line()
+brain.screen.print("File size:", len(fileContent))
+
+fileContent_str = fileContent.decode()
+brain.screen.new_line()
+brain.screen.print("File Content in String format:", fileContent_str)
+
+botConfig = json.loads(fileContent_str)
+brain.screen.new_line()
+brain.screen.print("File content in JSON Dump format:", json.dumps(botConfig))
+
+
+#############################################################################
+#                       CONFIG MODULE FUNCTIONS                             #
+#############################################################################
+
+def get_driveTrain_config(botConfig):
+    robot = botConfig.get("robot-configuration")
+    drivetrain = robot.get("drivetrain")
+    return drivetrain
+
+def get_leftMotors_config(driveTrainConfig):
+    motors = driveTrainConfig.get("Motors")
+    leftMotors = motors.get("left")
+    return leftMotors
+
+def get_bot_name(botConfig):
+    botName = botConfig.get("bot-name")
+    return botName
+
+def get_version(botConfig):
+    botVersion = botConfig.get("version")
+    return botVersion
+
+def get_season(botConfig):
+    botSeason = botConfig.get("season")
+    return botSeason
+
+def get_driveType(driveTrainConfig):
+    driveType = driveTrainConfig.get("drive-type")
+    return driveType
+
+def get_wheelBaseInches(driveTrainConfig):
+    wheelBaseInches = driveTrainConfig.get("wheel-base-inches")
+    return wheelBaseInches
+
+def get_trackWidthInches(driveTrainConfig):
+    trackWidthInches = driveTrainConfig.get("track-width-inches")
+    return trackWidthInches
+
+def get_wheelDiameterInches(driveTrainConfig):
+    wheelDiameterInches = driveTrainConfig.get("wheel-diameter-inches")
+    return wheelDiameterInches
+
+def get_trackingWheelDiamterInches(driveTrainConfig):
+    trackingWheelDiamterInches = driveTrainConfig.get("tracking-wheel-diamter-inches")
+    return trackingWheelDiamterInches
+
+def get_gearRatio(driveTrainConfig):
+    gearRatio = driveTrainConfig.get("gear-ratio")
+    return gearRatio
+
+def get_leftFrontMotor(leftMotorsConfig):
+    leftFrontMotor = leftMotorsConfig.get("front")
+    return leftFrontMotor
+
+def get_leftMiddleMotor(leftMotorsConfig):
+    leftMiddleMotor = leftMotorsConfig.get("middle")
+    return leftMiddleMotor
+
+def get_leftBackMotor(leftMotorsConfig):
+    leftBackMotor = leftMotorsConfig.get("back")
+    return leftBackMotor
+
+def get_leftFrontMotorPort(leftFrontMotor):
+    leftFrontMotorPort = leftFrontMotor.get("port")
+    return leftFrontMotorPort
+
+def get_leftMiddleMotorPort(leftMiddleMotor):
+    leftMiddleMotorPort = leftMiddleMotor.get("port")
+    return leftMiddleMotorPort
+
+def get_leftBackMotorPort(leftBackMotor):
+    leftBackMotorPort = leftBackMotor.get("port")
+    return leftBackMotorPort
+
+#############################################################################
+#                       CONFIG MODULE FUNCTIONS                             #
+#############################################################################
+
+driveTrainConfig = get_driveTrain_config(botConfig)
+
+leftMotorsConfig = get_leftMotors_config(driveTrainConfig)
+
+leftFrontMotor = get_leftFrontMotor(leftMotorsConfig)
+
+leftMiddleMotor = get_leftMiddleMotor(leftMotorsConfig)
+
+leftBackMotor = get_leftBackMotor(leftMotorsConfig)
+
+
+
+brain.screen.new_line()
+brain.screen.print(get_bot_name(botConfig))
+
+brain.screen.new_line()
+brain.screen.print(get_version(botConfig))
+
+brain.screen.new_line()
+brain.screen.print(get_season(botConfig))
+
+brain.screen.new_line()
+brain.screen.print(get_driveType(driveTrainConfig))
+
+brain.screen.new_line()
+brain.screen.print(get_wheelBaseInches(driveTrainConfig))
+
+brain.screen.new_line()
+brain.screen.print(get_trackWidthInches(driveTrainConfig))
+
+brain.screen.new_line()
+brain.screen.print(get_wheelDiameterInches(driveTrainConfig))
+
+brain.screen.new_line()
+brain.screen.print(get_trackingWheelDiamterInches(driveTrainConfig))
+
+brain.screen.new_line()
+brain.screen.print(get_gearRatio(driveTrainConfig))
+
+brain.screen.new_line()
+brain.screen.print(leftFrontMotor)
+
+brain.screen.new_line()
+brain.screen.print(leftMiddleMotor)
+
+brain.screen.new_line()
+brain.screen.print(leftBackMotor)
+
+brain.screen.new_line()
+brain.screen.print(get_leftFrontMotorPort(leftFrontMotor))
+
+brain.screen.new_line()
+brain.screen.print(get_leftMiddleMotorPort(leftMiddleMotor))
+
+brain.screen.new_line()
+brain.screen.print(get_leftBackMotorPort(leftBackMotor))
+# Funtions to get drive train wheel diameter & tracking wheel diameter
+# 
+
