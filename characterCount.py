@@ -29,6 +29,17 @@ Case |   Input    | Output
 string_input = str(input("Enter string: "))
 char_input = str(input("Enter characeter: "))
 
+def getCharacterCount(string_input, char_input):
+    stringLength = len(string_input)
+    index = 0 
+    count = 0 
+
+    while index < stringLength: 
+        if string_input[index] == char_input: 
+            count += 1 
+        index += 1 
+    return count
+
 stringLength = len(string_input)
 index = 0 
 count = 0 
