@@ -36,26 +36,14 @@ listInput = list(map(int, input("Enter list of numbers: ").split()))
 def getListDuplicates(listInput):
     oIndex = 0
     listLen = len(listInput)
-    duplicates = []
+
 
     while oIndex < listLen: 
         iIndex = oIndex + 1
         while iIndex < listLen:
             if listInput[oIndex] == listInput[iIndex]:
-                duplicates.append(listInput[oIndex])
+                print(listInput[oIndex])
                 break
             iIndex += 1
         oIndex += 1
-    return duplicates
 
-oIndex = 0
-listLen = len(listInput)
-
-while oIndex < listLen: 
-    iIndex = oIndex + 1
-    while iIndex < listLen:
-        if listInput[oIndex] == listInput[iIndex]:
-            print(listInput[oIndex])
-            break
-        iIndex += 1
-    oIndex += 1
