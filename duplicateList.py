@@ -37,7 +37,6 @@ def getListDuplicates(listInput):
     oIndex = 0
     listLen = len(listInput)
 
-
     while oIndex < listLen: 
         iIndex = oIndex + 1
         while iIndex < listLen:
@@ -47,3 +46,4 @@ def getListDuplicates(listInput):
             iIndex += 1
         oIndex += 1
 
+print(getListDuplicates(listInput))
