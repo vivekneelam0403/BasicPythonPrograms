@@ -1,0 +1,6 @@
+Apple,5,2
+Banana,10,1
+Apple,3,2
+Orange,4,3
+Banana,5,1
+Orange,2,3

@@ -1,0 +1,4 @@
+FRUIT   | COUNT | TOTAL
+Apple   | 8     | $16
+Banana  | 15    | $15
+Orange  | 6     | $18
